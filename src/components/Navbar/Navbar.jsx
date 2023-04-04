@@ -11,18 +11,26 @@ const Navbar = () => {
         { id: 2, name: 'About', path: '/about' },
         { id: 3, name: 'Contact', path: '/contact' },
         { id: 4, name: 'Products', path: '/products' },
-        { id: 5, name: 'Product Details', path: '/products/:id' }
+        { id: 5, name: 'Product Details', path: '/products' }
       ];
       
     return (
-            <nav >
+            <nav className='bg-purple-400'>
 
-                 <div onClick={() => setOpen(!open)}>
-                    <span>{open === true ? 'open':'close'}</span>
-                    <Bars3Icon className="h-6 w-6 text-blue-500" />
+                 <div onClick={() => setOpen(!open)} className='md:hidden'>
+                    <span>
+                        {
+                        open === true ? 
+                        <XMarkIcon className="h-6 w-6 text-blue-500" />
+                        :
+                        <Bars3Icon className="h-6 w-6 text-blue-500" />
+                        }
+                    </span>
+                    
+                    
                  </div>
 
-                <ul className='md:flex'>
+                <ul className={`md:flex absolute md:static duration-500 bg-purple-400 pl-8 pb-4 ${open ? 'top-6' : '-top-48'}`}>
                 {
                     routes.map(route => <Link 
                         key={route.id}
